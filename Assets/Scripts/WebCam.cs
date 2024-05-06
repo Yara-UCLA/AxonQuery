@@ -12,13 +12,10 @@ public class WebCam : MonoBehaviour
     void Start()
     {
         webCamTexture = new WebCamTexture();
+        webCamTexture.requestedWidth = 1280;
+        webCamTexture.requestedFPS = 60;
+        webCamTexture.requestedHeight = 720;
         if (!webCamTexture.isPlaying) webCamTexture.Play();
         img.texture = webCamTexture;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
