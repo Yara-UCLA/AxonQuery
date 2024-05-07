@@ -2,12 +2,9 @@ using UnityEngine;
 
 public class ObscureObject : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         var renders = GetComponentsInChildren<Renderer>();
-        foreach (var renderer in renders)
-        {
-            renderer.material.renderQueue = 2002; // set their renderQueue
-        }
+        foreach (var rend in renders) rend.material.renderQueue = 2002;
     }
 }

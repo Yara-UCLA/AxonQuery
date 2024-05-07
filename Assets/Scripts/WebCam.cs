@@ -3,17 +3,18 @@ using UnityEngine.UI;
 
 public class WebCam : MonoBehaviour
 {
+    [SerializeField] private RawImage img;
+    private WebCamTexture _webCamTexture;
 
-    [SerializeField]private RawImage img;
-    private WebCamTexture webCamTexture;
-
-    void Start()
+    private void Start()
     {
-        webCamTexture = new WebCamTexture();
-        webCamTexture.requestedWidth = 1280;
-        webCamTexture.requestedFPS = 60;
-        webCamTexture.requestedHeight = 720;
-        if (!webCamTexture.isPlaying) webCamTexture.Play();
-        img.texture = webCamTexture;
+        _webCamTexture = new WebCamTexture
+        {
+            requestedWidth = 1280,
+            requestedFPS = 60,
+            requestedHeight = 720
+        };
+        if (!_webCamTexture.isPlaying) _webCamTexture.Play();
+        img.texture = _webCamTexture;
     }
 }

@@ -3,36 +3,32 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-   
     [SerializeField] private float playerSpeed = 2.0f;
-    private NavMeshAgent agent;
+    private NavMeshAgent _agent;
+    private Camera _mainCamera;
 
     private void Start()
     {
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        _agent = gameObject.GetComponent<NavMeshAgent>();
+        _mainCamera = Camera.main;
     }
 
-    void Update()
+    private void Update()
     {
-        float horizontalAxis = Input.GetAxis("Horizontal");
-        float verticalAxis = Input.GetAxis("Vertical");
+        var horizontalAxis = Input.GetAxis("Horizontal");
+        var verticalAxis = Input.GetAxis("Vertical");
 
-        var camera = Camera.main;
-        var forward = camera.transform.forward;
-        var right = camera.transform.right;
+        var forward = _mainCamera.transform.forward;
+        var right = _mainCamera.transform.right;
 
         forward.y = 0f;
         right.y = 0f;
         forward.Normalize();
         right.Normalize();
 
+        var move = forward * verticalAxis + right * horizontalAxis;
+        _agent.Move(move * Time.deltaTime * playerSpeed);
 
-        Vector3 move = forward * verticalAxis + right * horizontalAxis;
-        agent.Move(move * Time.deltaTime * playerSpeed);
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
+        if (move != Vector3.zero) gameObject.transform.forward = move;
     }
 }
