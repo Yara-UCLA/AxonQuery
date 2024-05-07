@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Vector3 playerVelocity;
-    [SerializeField] private bool groundedPlayer;
+   
     [SerializeField] private float playerSpeed = 2.0f;
-    [SerializeField] private float jumpHeight = 1.0f;
-    [SerializeField] private float gravityValue = -9.81f;
     private NavMeshAgent agent;
 
     private void Start()
@@ -19,26 +14,25 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
+        float horizontalAxis = Input.GetAxis("Horizontal");
+        float verticalAxis = Input.GetAxis("Vertical");
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        var camera = Camera.main;
+        var forward = camera.transform.forward;
+        var right = camera.transform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+
+        Vector3 move = forward * verticalAxis + right * horizontalAxis;
         agent.Move(move * Time.deltaTime * playerSpeed);
 
         if (move != Vector3.zero)
         {
             gameObject.transform.forward = move;
         }
-
-        // Changes the height position of the player..
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        agent.Move(playerVelocity * Time.deltaTime);
     }
 }
