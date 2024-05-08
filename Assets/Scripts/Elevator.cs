@@ -3,17 +3,28 @@ using UnityEngine.AI;
 
 public class Elevator : MonoBehaviour
 {
-    private Transform _destination;
+    private ElevatorPoint _low;
+    private ElevatorPoint _high;
 
-    private void Start()
+    public void Start()
     {
-        _destination = GetComponentInChildren<Transform>();
+        var elevatorPoints = GetComponentsInChildren<ElevatorPoint>();
+        _low = elevatorPoints[0];
+        _high = elevatorPoints[1];
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Move (ElevatorPoint current, NavMeshAgent agent)
     {
-        var agent = other.GetComponent<NavMeshAgent>();
-        if (agent != null)
-            agent.Warp(_destination.position);
+        if (current == _low)
+        {
+            agent.Warp(_high.transform.position);
+            _high.canMove = false;
+        }
+
+        else
+        {
+            agent.Warp(_low.transform.position);
+            _low.canMove = false;
+        }
     }
 }
