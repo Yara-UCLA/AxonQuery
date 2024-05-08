@@ -8,27 +8,27 @@ public class TriggerEvent : MonoBehaviour
 
     private void Start()
     {
-        var children = GetComponentsInChildren<Transform>();
-        foreach (var child in children)
-        {
-            if (transform == child) continue;
-
-            if (child.TryGetComponent<ParticleSystem>(out var particle))
-            {
-                _particles.Add(particle);
-                particle.Stop();
-            }
-            else
-            {
-                _gameObjects.Add(child.gameObject);
-                child.gameObject.SetActive(false);
-            }
-        }
+        foreach (var particle in _particles) particle.Stop();
+        foreach (var obj in _gameObjects) obj.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         foreach (var particle in _particles) particle.Play();
         foreach (var obj in _gameObjects) obj.SetActive(true);
+    }
+
+    private void OnValidate()
+    {
+        var children = GetComponentsInChildren<Transform>();
+        foreach (var child in children)
+        {
+            if (transform == child) continue;
+
+            if (child.TryGetComponent<ParticleSystem>(out var particle))
+                _particles.Add(particle);
+            else
+                _gameObjects.Add(child.gameObject);
+        }
     }
 }

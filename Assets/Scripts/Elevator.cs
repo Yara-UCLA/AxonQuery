@@ -6,7 +6,7 @@ public class Elevator : MonoBehaviour
     private ElevatorPoint _high;
     private ElevatorPoint _low;
 
-    public void Start()
+    public void OnValidate()
     {
         var elevatorPoints = GetComponentsInChildren<ElevatorPoint>();
         _low = elevatorPoints[0];

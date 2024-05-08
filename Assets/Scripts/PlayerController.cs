@@ -7,12 +7,6 @@ public class PlayerController : MonoBehaviour
     private NavMeshAgent _agent;
     private Camera _mainCamera;
 
-    private void Start()
-    {
-        _agent = gameObject.GetComponent<NavMeshAgent>();
-        _mainCamera = Camera.main;
-    }
-
     private void Update()
     {
         var horizontalAxis = Input.GetAxis("Horizontal");
@@ -30,5 +24,11 @@ public class PlayerController : MonoBehaviour
         _agent.Move(move * Time.deltaTime * playerSpeed);
 
         if (move != Vector3.zero) gameObject.transform.forward = move;
+    }
+
+    private void OnValidate()
+    {
+        _agent = gameObject.GetComponent<NavMeshAgent>();
+        _mainCamera = Camera.main;
     }
 }
