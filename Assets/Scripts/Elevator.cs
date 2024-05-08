@@ -3,8 +3,8 @@ using UnityEngine.AI;
 
 public class Elevator : MonoBehaviour
 {
-    private ElevatorPoint _low;
     private ElevatorPoint _high;
+    private ElevatorPoint _low;
 
     public void Start()
     {
@@ -13,7 +13,7 @@ public class Elevator : MonoBehaviour
         _high = elevatorPoints[1];
     }
 
-    public void Move (ElevatorPoint current, NavMeshAgent agent)
+    public void Move(ElevatorPoint current, NavMeshAgent agent)
     {
         if (current == _low)
         {

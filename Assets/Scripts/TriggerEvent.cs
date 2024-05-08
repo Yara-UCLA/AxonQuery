@@ -1,44 +1,34 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerEvent : MonoBehaviour
 {
-    [SerializeField] private TriggerType type;
-    [SerializeField] private GameObject target;
+    private readonly List<GameObject> _gameObjects = new();
+    private readonly List<ParticleSystem> _particles = new();
 
     private void Start()
     {
-        switch (type)
+        var children = GetComponentsInChildren<Transform>();
+        foreach (var child in children)
         {
-            case TriggerType.Particle:
-                target.GetComponent<ParticleSystem>().Stop();
-                break;
-            case TriggerType.OnOff:
-                target.SetActive(false);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+            if (transform == child) continue;
+
+            if (child.TryGetComponent<ParticleSystem>(out var particle))
+            {
+                _particles.Add(particle);
+                particle.Stop();
+            }
+            else
+            {
+                _gameObjects.Add(child.gameObject);
+                child.gameObject.SetActive(false);
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        switch (type)
-        {
-            case TriggerType.Particle:
-                target.GetComponent<ParticleSystem>().Play();
-                break;
-            case TriggerType.OnOff:
-                target.SetActive(true);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-    }
-
-    private enum TriggerType
-    {
-        Particle,
-        OnOff
+        foreach (var particle in _particles) particle.Play();
+        foreach (var obj in _gameObjects) obj.SetActive(true);
     }
 }

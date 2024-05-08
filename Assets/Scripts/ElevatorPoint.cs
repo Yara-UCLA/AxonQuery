@@ -3,8 +3,9 @@ using UnityEngine.AI;
 
 public class ElevatorPoint : MonoBehaviour
 {
-    private Elevator _elevator;
     public bool canMove;
+    private Elevator _elevator;
+
     private void Start()
     {
         _elevator = GetComponentInParent<Elevator>();
