@@ -1,24 +1,25 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class ElevatorPoint : MonoBehaviour
 {
-    public bool canMove;
-    private Elevator _elevator;
+    [HideInInspector] [SerializeField] private Elevator elevator;
+    [NonSerialized] public bool CanMove = true;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!canMove) return;
-        _elevator.Move(this, other.GetComponent<NavMeshAgent>());
+        if (!CanMove) return;
+        elevator.Move(this, other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        canMove = true;
+        CanMove = true;
     }
 
     private void OnValidate()
     {
-        _elevator = GetComponentInParent<Elevator>();
+        elevator = GetComponentInParent<Elevator>();
     }
 }

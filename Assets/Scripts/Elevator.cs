@@ -1,30 +1,32 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Elevator : MonoBehaviour
 {
-    private ElevatorPoint _high;
-    private ElevatorPoint _low;
+    [HideInInspector] [SerializeField] private ElevatorPoint high;
+    [HideInInspector] [SerializeField] private ElevatorPoint low;
 
     public void OnValidate()
     {
         var elevatorPoints = GetComponentsInChildren<ElevatorPoint>();
-        _low = elevatorPoints[0];
-        _high = elevatorPoints[1];
+        low = elevatorPoints[0];
+        high = elevatorPoints[1];
     }
 
-    public void Move(ElevatorPoint current, NavMeshAgent agent)
+    public void Move(ElevatorPoint current, Collider col)
     {
-        if (current == _low)
+        var agent = col.GetComponent<NavMeshAgent>();
+        if (current == low)
         {
-            agent.Warp(_high.transform.position);
-            _high.canMove = false;
+            agent.Warp(high.transform.position);
+            high.CanMove = false;
         }
 
         else
         {
-            agent.Warp(_low.transform.position);
-            _low.canMove = false;
+            agent.Warp(low.transform.position);
+            low.CanMove = false;
         }
     }
 }
