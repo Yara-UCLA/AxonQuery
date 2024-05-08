@@ -366,7 +366,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -420,7 +420,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.6839622, b: 0.8483989, a: 1}
+      maxColor: {r: 1, g: 0.6367924, b: 0.7894449, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1505,8 +1505,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.8066038, g: 0.877855, b: 1, a: 0}
-        key1: {r: 0.8664903, g: 0.6650944, b: 1, a: 0.13333334}
+        key0: {r: 0.75, g: 0.84183675, b: 1, a: 0}
+        key1: {r: 0.91765404, g: 0.6666667, b: 1, a: 0.13333334}
         key2: {r: 0.76729757, g: 0.4198113, b: 1, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -5102,7 +5102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820605089}
   m_Layer: 0
-  m_Name: Gray Volume Fog
+  m_Name: Volume Fog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5117,7 +5117,7 @@ Transform:
   m_GameObject: {fileID: 820605088}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.5, y: 25, z: -18.7}
+  m_LocalPosition: {x: 10, y: 15, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5300,7 +5300,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.19607843}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -5322,7 +5322,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 1
-  far clip plane: 500
+  far clip plane: 200
   field of view: 78
   orthographic: 0
   orthographic size: 0.35
@@ -5350,7 +5350,7 @@ Transform:
   m_GameObject: {fileID: 1219581688}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: -0.3696438, z: 0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: 41.3, y: 46, z: -50.3}
+  m_LocalPosition: {x: 42, y: 42, z: -42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5369,7 +5369,7 @@ GameObject:
   - component: {fileID: 1597524910}
   - component: {fileID: 1597524909}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Gradient BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5384,8 +5384,8 @@ Transform:
   m_GameObject: {fileID: 1597524906}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0.000000029802319, z: -0.0000000074505797, w: 0.70710677}
-  m_LocalPosition: {x: -0.000015258789, y: 0, z: 329}
-  m_LocalScale: {x: 1116.2588, y: 1116.259, z: 1116.2592}
+  m_LocalPosition: {x: 0, y: 0, z: 130}
+  m_LocalScale: {x: 38.4, y: 0, z: 21.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1219581691}
@@ -5569,7 +5569,7 @@ GameObject:
   - component: {fileID: 1849634796}
   - component: {fileID: 1849634795}
   m_Layer: 5
-  m_Name: Model RT
+  m_Name: Cam Render Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5634,8 +5634,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 528809229}
-  - {fileID: 1219581691}
   - {fileID: 706984066}
+  - {fileID: 1219581691}
+  - {fileID: 820605089}
   - {fileID: 1724768522}
   - {fileID: 988224421}
-  - {fileID: 820605089}

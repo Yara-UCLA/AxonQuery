@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BgGradieng
+  m_Name: Gradient
   m_Shader: {fileID: 4800000, guid: 971088a95a284b2478a09267d61c5bc9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -79,8 +79,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.83434343, g: 0, b: 1, a: 0.78431374}
+    - _Color: {r: 0.83434343, g: 0, b: 1, a: 0.47058824}
     - _Color1: {r: 0, g: 0.8580704, b: 1, a: 1}
-    - _Color2: {r: 0, g: 0.7025659, b: 1, a: 0.78431374}
+    - _Color2: {r: 0, g: 0.7025659, b: 1, a: 0.47058824}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
