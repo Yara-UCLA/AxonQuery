@@ -1,10 +1,20 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class ObscureObject : MonoBehaviour
+namespace _AxonQuery.Scripts
 {
-    private void Start()
+    public class ObscureObject : MonoBehaviour
     {
-        var renders = GetComponentsInChildren<Renderer>();
-        foreach (var rend in renders) rend.material.renderQueue = 2002;
+        [HideInInspector] [SerializeField] private Renderer[] renderers;
+
+        private void Start()
+        {
+            foreach (var rend in renderers) rend.material.renderQueue = 2002;
+        }
+
+        private void OnValidate()
+        {
+            renderers = GetComponentsInChildren<Renderer>();
+        }
     }
 }

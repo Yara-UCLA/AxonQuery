@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class SceneSwitchTrigger : MonoBehaviour
+namespace _AxonQuery.Scripts
 {
-    private SceneSwitchManager _sceneSwitchManager;
-
-    private void Start()
+    public class SceneSwitchTrigger : MonoBehaviour
     {
-        _sceneSwitchManager = GameObject.FindWithTag("SceneManager").GetComponent<SceneSwitchManager>();
-    }
+        private SceneSwitchManager _sceneSwitchManager;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        _sceneSwitchManager.SwitchScene();
+        private void Start()
+        {
+            _sceneSwitchManager = GameObject.FindWithTag("SceneManager").GetComponent<SceneSwitchManager>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            _sceneSwitchManager.SwitchScene();
+        }
     }
 }

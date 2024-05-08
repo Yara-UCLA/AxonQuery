@@ -1,37 +1,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerEvent : MonoBehaviour
+namespace _AxonQuery.Scripts
 {
-    [HideInInspector] [SerializeField] private List<GameObject> gameObjects = new();
-    [HideInInspector] [SerializeField] private List<ParticleSystem> particles = new();
-
-    private void Start()
+    public class TriggerEvent : MonoBehaviour
     {
-        foreach (var particle in particles) particle.Stop();
-        foreach (var obj in gameObjects) obj.SetActive(false);
-    }
+        [HideInInspector] [SerializeField] private List<GameObject> gameObjects = new();
+        [HideInInspector] [SerializeField] private List<ParticleSystem> particles = new();
 
-    private void OnTriggerEnter(Collider other)
-    {
-        foreach (var particle in particles) particle.Play();
-        foreach (var obj in gameObjects) obj.SetActive(true);
-    }
-
-    private void OnValidate()
-    {
-        gameObjects.Clear();
-        particles.Clear();
-
-        var children = GetComponentsInChildren<Transform>();
-        foreach (var child in children)
+        private void Start()
         {
-            if (transform == child) continue;
+            foreach (var particle in particles) particle.Stop();
+            foreach (var obj in gameObjects) obj.SetActive(false);
+        }
 
-            if (child.TryGetComponent<ParticleSystem>(out var particle))
-                particles.Add(particle);
-            else
-                gameObjects.Add(child.gameObject);
+        private void OnTriggerEnter(Collider other)
+        {
+            foreach (var particle in particles) particle.Play();
+            foreach (var obj in gameObjects) obj.SetActive(true);
+        }
+
+        private void OnValidate()
+        {
+            gameObjects.Clear();
+            particles.Clear();
+
+            var children = GetComponentsInChildren<Transform>();
+            foreach (var child in children)
+            {
+                if (transform == child) continue;
+
+                if (child.TryGetComponent<ParticleSystem>(out var particle))
+                    particles.Add(particle);
+                else
+                    gameObjects.Add(child.gameObject);
+            }
         }
     }
 }

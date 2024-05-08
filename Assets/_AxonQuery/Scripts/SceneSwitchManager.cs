@@ -1,26 +1,30 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
-public class SceneSwitchManager : MonoBehaviour
+namespace _AxonQuery.Scripts
 {
-    [SerializeField] private int currentSceneIndex;
-    private void Start()
+    public class SceneSwitchManager : MonoBehaviour
     {
-        SceneManager.LoadScene(sceneBuildIndex: 1, LoadSceneMode.Additive);
-        currentSceneIndex = 1;
-    }
+        [SerializeField] private int currentSceneIndex;
 
-    public void SwitchScene()
-    {
-        SceneManager.UnloadSceneAsync(currentSceneIndex);
-        currentSceneIndex += 1;
-        
-        if (currentSceneIndex == SceneManager.sceneCountInBuildSettings)
+        private void Start()
         {
-            currentSceneIndex = 0;
-            return;
+            SceneManager.LoadScene(1, LoadSceneMode.Additive);
+            currentSceneIndex = 1;
         }
-        SceneManager.LoadScene(currentSceneIndex, LoadSceneMode.Additive);
+
+        public void SwitchScene()
+        {
+            SceneManager.UnloadSceneAsync(currentSceneIndex);
+            currentSceneIndex += 1;
+
+            if (currentSceneIndex == SceneManager.sceneCountInBuildSettings)
+            {
+                currentSceneIndex = 0;
+                return;
+            }
+
+            SceneManager.LoadScene(currentSceneIndex, LoadSceneMode.Additive);
+        }
     }
 }

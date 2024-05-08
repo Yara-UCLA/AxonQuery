@@ -1,34 +1,37 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour
+namespace _AxonQuery.Scripts
 {
-    [SerializeField] private float playerSpeed = 2.0f;
-    [HideInInspector] [SerializeField] private NavMeshAgent agent;
-    [HideInInspector] [SerializeField] private Camera mainCamera;
-
-    private void Update()
+    public class PlayerController : MonoBehaviour
     {
-        var horizontalAxis = Input.GetAxis("Horizontal");
-        var verticalAxis = Input.GetAxis("Vertical");
+        [SerializeField] private float playerSpeed = 2.0f;
+        [HideInInspector] [SerializeField] private NavMeshAgent agent;
+        [HideInInspector] [SerializeField] private Camera mainCamera;
 
-        var forward = mainCamera.transform.forward;
-        var right = mainCamera.transform.right;
+        private void Update()
+        {
+            var horizontalAxis = Input.GetAxis("Horizontal");
+            var verticalAxis = Input.GetAxis("Vertical");
 
-        forward.y = 0f;
-        right.y = 0f;
-        forward.Normalize();
-        right.Normalize();
+            var forward = mainCamera.transform.forward;
+            var right = mainCamera.transform.right;
 
-        var move = forward * verticalAxis + right * horizontalAxis;
-        agent.Move(move * Time.deltaTime * playerSpeed);
+            forward.y = 0f;
+            right.y = 0f;
+            forward.Normalize();
+            right.Normalize();
 
-        if (move != Vector3.zero) gameObject.transform.forward = move;
-    }
+            var move = forward * verticalAxis + right * horizontalAxis;
+            agent.Move(move * Time.deltaTime * playerSpeed);
 
-    private void OnValidate()
-    {
-        agent = gameObject.GetComponent<NavMeshAgent>();
-        mainCamera = Camera.main;
+            if (move != Vector3.zero) gameObject.transform.forward = move;
+        }
+
+        private void OnValidate()
+        {
+            agent = gameObject.GetComponent<NavMeshAgent>();
+            mainCamera = Camera.main;
+        }
     }
 }

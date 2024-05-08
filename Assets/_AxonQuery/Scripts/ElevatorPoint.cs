@@ -1,25 +1,26 @@
-using System;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class ElevatorPoint : MonoBehaviour
+namespace _AxonQuery.Scripts
 {
-    [HideInInspector] [SerializeField] private Elevator elevator;
-    [NonSerialized] public bool CanMove = true;
-
-    private void OnTriggerEnter(Collider other)
+    public class ElevatorPoint : MonoBehaviour
     {
-        if (!CanMove) return;
-        elevator.Move(this, other);
-    }
+        [HideInInspector] [SerializeField] private Elevator elevator;
+        [HideInInspector] public bool canMove = true;
 
-    private void OnTriggerExit(Collider other)
-    {
-        CanMove = true;
-    }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!canMove) return;
+            elevator.Move(this, other);
+        }
 
-    private void OnValidate()
-    {
-        elevator = GetComponentInParent<Elevator>();
+        private void OnTriggerExit(Collider other)
+        {
+            canMove = true;
+        }
+
+        private void OnValidate()
+        {
+            elevator = GetComponentInParent<Elevator>();
+        }
     }
 }

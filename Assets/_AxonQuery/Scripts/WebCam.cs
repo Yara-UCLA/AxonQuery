@@ -1,20 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WebCam : MonoBehaviour
+namespace _AxonQuery.Scripts
 {
-    [SerializeField] private RawImage img;
-    private WebCamTexture _webCamTexture;
-
-    private void Start()
+    public class WebCam : MonoBehaviour
     {
-        _webCamTexture = new WebCamTexture
+        [SerializeField] private RawImage img;
+        private WebCamTexture _webCamTexture;
+
+        private void Start()
         {
-            requestedWidth = 1280,
-            requestedFPS = 60,
-            requestedHeight = 720
-        };
-        if (!_webCamTexture.isPlaying) _webCamTexture.Play();
-        img.texture = _webCamTexture;
+            _webCamTexture = new WebCamTexture
+            {
+                requestedWidth = 1280,
+                requestedFPS = 60,
+                requestedHeight = 720
+            };
+            if (!_webCamTexture.isPlaying) _webCamTexture.Play();
+            img.texture = _webCamTexture;
+        }
     }
 }
