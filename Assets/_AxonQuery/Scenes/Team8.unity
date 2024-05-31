@@ -497,12 +497,7 @@ MonoBehaviour:
   - {fileID: 358884497}
   - {fileID: 2038862172}
   - {fileID: 1335794699}
-  particles:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  particles: []
 --- !u!65 &102318471
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4242,6 +4237,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1817042119497687612, guid: 6c3872cd73f3c3f44ad443f81d6fdf95, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479174548195956888, guid: 6c3872cd73f3c3f44ad443f81d6fdf95, type: 3}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

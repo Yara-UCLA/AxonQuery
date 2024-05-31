@@ -13,18 +13,30 @@ namespace _AxonQuery.Scripts
             currentSceneIndex = 1;
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SwitchScene();
+            }
+        }
+
         public void SwitchScene()
         {
             SceneManager.UnloadSceneAsync(currentSceneIndex);
             currentSceneIndex += 1;
-
+          
             if (currentSceneIndex == SceneManager.sceneCountInBuildSettings)
             {
-                currentSceneIndex = 0;
-                return;
+#if UNITY_EDITOR                
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
             }
 
-            SceneManager.LoadScene(currentSceneIndex, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync(currentSceneIndex, LoadSceneMode.Additive);
+        
         }
     }
 }

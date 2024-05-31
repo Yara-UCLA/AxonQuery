@@ -9,27 +9,27 @@ EditorBuildSettings:
     path: Assets/_AxonQuery/Scenes/Main.unity
     guid: ff728c1fb8d10b74cb8101b63af3a42d
   - enabled: 1
-    path: Assets/_AxonQuery/Scenes/Team1.unity
-    guid: c05db84b54903401d8daba79f2ab8bf6
+    path: Assets/_AxonQuery/Scenes/Team5.unity
+    guid: a5a154e87d803d34e8b6f0e03f7832b4
+  - enabled: 1
+    path: Assets/_AxonQuery/Scenes/Team8.unity
+    guid: 82e427bc7397d472993fd2f5d8fb8c3d
   - enabled: 1
     path: Assets/_AxonQuery/Scenes/Team2.unity
     guid: 6cda6f637564049f5ac693fdec4c8a01
   - enabled: 1
-    path: Assets/_AxonQuery/Scenes/Team3.unity
-    guid: 81c9c9b6fc62d487a8f816f855fcdedc
+    path: Assets/_AxonQuery/Scenes/Team1.unity
+    guid: c05db84b54903401d8daba79f2ab8bf6
   - enabled: 1
     path: Assets/_AxonQuery/Scenes/Team4.unity
     guid: 13263f32f94c141708e3660787af970a
   - enabled: 1
-    path: Assets/_AxonQuery/Scenes/Team5.unity
-    guid: a5a154e87d803d34e8b6f0e03f7832b4
-  - enabled: 1
     path: Assets/_AxonQuery/Scenes/Team6.unity
     guid: 4cbd55f5472007d46be1032bc3cc7d28
   - enabled: 1
+    path: Assets/_AxonQuery/Scenes/Team3.unity
+    guid: 81c9c9b6fc62d487a8f816f855fcdedc
+  - enabled: 1
     path: Assets/_AxonQuery/Scenes/Team7.unity
     guid: fea077f19750140d7a5647171a08c567
-  - enabled: 1
-    path: Assets/_AxonQuery/Scenes/Team8.unity
-    guid: 82e427bc7397d472993fd2f5d8fb8c3d
   m_configObjects: {}
