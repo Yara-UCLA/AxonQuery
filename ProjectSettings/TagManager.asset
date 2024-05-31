@@ -5,12 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - SceneManager
-  - Fire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - lll
+  - 
   - Water
   - UI
   - 
