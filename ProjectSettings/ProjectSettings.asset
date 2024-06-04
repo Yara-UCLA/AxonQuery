@@ -394,7 +394,7 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: 
+  cameraUsageDescription: Web cam
   locationUsageDescription: 
   microphoneUsageDescription: 
   bluetoothUsageDescription: 

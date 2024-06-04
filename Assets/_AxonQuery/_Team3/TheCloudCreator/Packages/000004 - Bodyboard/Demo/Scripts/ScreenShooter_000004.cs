@@ -96,27 +96,3 @@ public class ScreenShooter_000004 : MonoBehaviour
         }
     }
 }
-
-[CustomEditor(typeof(ScreenShooter_000004))]
-public class ScreenShooter_000004CE : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        //	Store the ScreenShooter class
-        ScreenShooter_000004 sSClass = target as ScreenShooter_000004;
-
-        sSClass.useMouseFiring = EditorGUILayout.Toggle("Use mouse firing", sSClass.useMouseFiring);
-
-        //  Make the selected object type visible
-        sSClass.selectedObject = (ScreenShooter_000004.Selectibles)EditorGUILayout.EnumPopup("Object type", sSClass.selectedObject);
-        if (sSClass.selectedObject == ScreenShooter_000004.Selectibles.Custom)
-        {
-            sSClass.customObject = (GameObject)EditorGUILayout.ObjectField(sSClass.customObject, typeof(GameObject), false);
-        }
-
-        //  Make the 'force' value visible
-        sSClass.force = EditorGUILayout.IntField("Force", sSClass.force);
-        sSClass.massMultiplier = EditorGUILayout.FloatField("Mass multiplier", sSClass.massMultiplier);
-        sSClass.timer = EditorGUILayout.IntField("Life (secs)", sSClass.timer);
-    }
-}
